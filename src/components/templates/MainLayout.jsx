@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
 
+import Footer from "components/organisms/Footer";
+import Navbar from "components/organisms/Navbar";
+
 const MainLayout = () => (
   <div>
-    <main className="mx-auto flex max-w-screen-xl flex-col items-center py-12">
+    <Navbar />
+    <main className="w-full">
       <Outlet />
     </main>
+    <Footer />
   </div>
 );
 
