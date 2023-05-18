@@ -10,6 +10,7 @@ import LoginPage from "views/LoginPage";
 import AboutPage from "views/AboutPage";
 import ContactPage from "views/ContactPage";
 import RegisterPage from "views/RegisterPage";
+import AddProductPage from "views/AddProductPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/add_product" element={<AddProductPage />} />
             </Route>
           </Routes>
         </AuthProvider>

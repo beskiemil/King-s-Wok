@@ -45,7 +45,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-80px-172px)] w-full flex-col items-center justify-center gap-2">
+    <div className="flex min-h-[calc(100vh-200px)] w-full flex-col items-center justify-center gap-2">
       <form onSubmit={handleUserRegister} className="flex flex-col gap-5">
         <Input
           type="name"

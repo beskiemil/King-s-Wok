@@ -56,7 +56,7 @@ const Navbar = () => {
         {role === "admin" && (
           <>
             <NavLink
-              to="/dodaj_produkt"
+              to="/add_product"
               className={({ isActive }) =>
                 isActive ? activeLink : unactiveLink
               }
