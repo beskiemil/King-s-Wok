@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "providers/AuthProvider";
 import Input from "components/atoms/Input";
@@ -32,7 +32,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex h-[80vh] items-center justify-center">
+    <div className="flex min-h-[calc(100vh-80px-172px)] w-full flex-col items-center justify-center gap-2">
       <form onSubmit={handleUserLogin} className="flex flex-col gap-5">
         <Input
           type="email"
@@ -56,6 +56,10 @@ const LoginPage = () => {
         />
         <Button type="submit" text="Zaloguj się" />
       </form>
+      <p>Nie masz konta?</p>
+      <Link to="/register" className="text-orange">
+        Zarejestruj się!
+      </Link>
     </div>
   );
 };

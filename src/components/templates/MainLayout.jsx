@@ -6,7 +6,7 @@ import Navbar from "components/organisms/Navbar";
 const MainLayout = () => (
   <div>
     <Navbar />
-    <main className="w-full">
+    <main className="mb-20 w-full">
       <Outlet />
     </main>
     <Footer />

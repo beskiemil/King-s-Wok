@@ -1,25 +1,33 @@
+import { useContext } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import logo from "assets/logo-orange.svg";
+import { AuthContext } from "providers/AuthProvider";
 
 const activeLink =
   "p-4 text-bold decoration-orange underline underline-offset-[10px]";
 const unactiveLink = "p-4";
 
 const Navbar = () => {
+  const { userInfo, logout } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    //await logout();
+    await logout();
 
     navigate("/");
   };
 
-  //const name = userInfo?.name;     //jezeli usytkownik jest zalogowany, to wyswietla przycisk wylogowywania
+  const { role } = userInfo;
 
   return (
-    <header className="flex justify-between bg-greenGrey px-10 py-2 text-xl text-white shadow-md">
+    <header className="flex justify-between bg-greenGrey px-8 py-1 text-xl text-white shadow-md xl:py-2">
       <Link to="/" className="flex items-center justify-center">
-        <img src={logo} alt="King's Wok" className="h-[4.5rem] w-[4.5rem]" />
+        <img
+          src={logo}
+          alt="King's Wok"
+          className="h-16 2xl:h-[4.5rem] 2xl:w-[4.5rem]"
+        />
         <h1 className="font-serif text-2xl font-bold tracking-wider text-white">
           King&apos;s Wok
         </h1>
@@ -45,22 +53,37 @@ const Navbar = () => {
         </NavLink>
       </nav>
       <div className="flex items-center justify-center">
-        {name && (
+        {role === "admin" && (
           <>
             <NavLink
-              to="/utworz_post"
+              to="/dodaj_produkt"
               className={({ isActive }) =>
                 isActive ? activeLink : unactiveLink
               }
             >
-              Utwórz post
+              Dodaj produkt
             </NavLink>
             <button onClick={handleLogout} className={unactiveLink}>
               Wyloguj się
             </button>
           </>
         )}
-        {!name && (
+        {role === "user" && (
+          <>
+            <NavLink
+              to="/zamowienia"
+              className={({ isActive }) =>
+                isActive ? activeLink : unactiveLink
+              }
+            >
+              Zamowienia
+            </NavLink>
+            <button onClick={handleLogout} className={unactiveLink}>
+              Wyloguj się
+            </button>
+          </>
+        )}
+        {role === "" && (
           <>
             <NavLink
               to="/login"

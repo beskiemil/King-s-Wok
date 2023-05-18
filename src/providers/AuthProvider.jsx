@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { PropTypes } from "prop-types";
 
 export const AuthContext = createContext({
@@ -6,6 +6,7 @@ export const AuthContext = createContext({
   name: "",
   lastname: "",
   email: "",
+  role: "",
 });
 
 const AuthProvider = ({ children }) => {
@@ -14,7 +15,39 @@ const AuthProvider = ({ children }) => {
     name: "",
     lastname: "",
     email: "",
+    role: "",
   });
+
+  const register = async (userValues) => {
+    const response = await fetch("http://localhost:3000/register", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: userValues.name,
+        lastname: userValues.lastname,
+        email: userValues.email,
+        password: userValues.password,
+      }),
+    });
+    if (response.status === 409) {
+      return response.json();
+    }
+    if (response.status === 200) {
+      response.json().then((data) => {
+        setUserInfo({
+          id: data.id,
+          name: data.name,
+          lastname: data.lastname,
+          email: data.email,
+          role: data.role,
+        });
+      });
+    }
+    return null;
+  };
 
   const login = async (email, password) => {
     const response = await fetch("http://localhost:3000/login", {
@@ -38,6 +71,7 @@ const AuthProvider = ({ children }) => {
           name: data.name,
           lastname: data.lastname,
           email: data.email,
+          role: data.role,
         });
       });
       return null;
@@ -63,6 +97,7 @@ const AuthProvider = ({ children }) => {
           name: data.name,
           lastname: data.lastname,
           email: data.email,
+          role: data.role,
         });
       });
       return null;
@@ -81,17 +116,17 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  // useEffect(() => {
-  //   checkProfile();
-  // }, []);
+  useEffect(() => {
+    checkProfile();
+  }, []);
 
   return (
     <AuthContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         userInfo,
-        setUserInfo,
         login,
+        register,
         logout,
         checkProfile,
       }}

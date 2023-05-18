@@ -6,7 +6,7 @@ import curry from "assets/product-photos/curry.jpg";
 
 const ProductSlider = () => {
   return (
-    <div className="flex justify-around">
+    <div className="md:flex md:flex-col md:items-center md:justify-center md:gap-16 lg:flex lg:flex-row lg:justify-around lg:gap-0">
       <ProductTile
         img={dimsum}
         name="Dim Sum"
