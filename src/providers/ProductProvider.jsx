@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types";
 import { useQuery } from "@tanstack/react-query";
 import { createContext } from "react";
 
-export const PostContext = createContext({});
+export const ProductContext = createContext({});
 
 const ProductProvider = ({ children }) => {
   const fetchProducts = async () => {
@@ -10,7 +10,7 @@ const ProductProvider = ({ children }) => {
     if (!response.ok) throw new Error("Could not fetch products");
     return response.json();
   };
-  const posts = useQuery("posts", fetchProducts);
+  const products = useQuery(["products"], fetchProducts);
 
   const fetchProduct = async (id) => {
     const response = await fetch(`http://localhost:3000/products/${id}`);
@@ -18,12 +18,12 @@ const ProductProvider = ({ children }) => {
     return response.json();
   };
 
-  const usePost = (id) => useQuery(["post", id], () => fetchProduct(id));
+  const useProduct = (id) => useQuery(["product", id], () => fetchProduct(id));
 
   return (
-    <PostContext.Provider value={{ posts, usePost }}>
+    <ProductContext.Provider value={{ products, useProduct }}>
       {children}
-    </PostContext.Provider>
+    </ProductContext.Provider>
   );
 };
 

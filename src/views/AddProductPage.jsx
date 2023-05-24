@@ -6,11 +6,13 @@ import { AuthContext } from "providers/AuthProvider";
 import ErrorPage from "views/ErrorPage";
 import Button from "components/atoms/Button";
 import Input from "components/atoms/Input";
+import Select from "components/atoms/Select";
 
 const AddProductPage = () => {
   const { userInfo, setUserInfo } = useContext(AuthContext);
 
   const [productName, setProductName] = useState("");
+  const [productCategory, setProductCategory] = useState("Dania główne");
   const [productDescription, setProductDescription] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productImage, setProductImage] = useState("");
@@ -32,6 +34,7 @@ const AddProductPage = () => {
     e.preventDefault();
     const data = new FormData();
     data.set("name", productName);
+    data.set("category", productCategory);
     data.set("description", productDescription);
     data.set("price", productPrice);
     data.set("image", productImage[0]);
@@ -41,6 +44,7 @@ const AddProductPage = () => {
         queryClient.invalidateQueries("posts");
 
         setProductName("");
+        setProductCategory("Dania główne");
         setProductDescription("");
         setProductPrice("");
         setProductImage("");
@@ -79,6 +83,15 @@ const AddProductPage = () => {
           onChange={(e) => setProductName(e.target.value)}
           className="w-full"
           required
+        />
+        <Select
+          label="Kategoria"
+          name="productCategory"
+          id="productCategory"
+          options={["Dania główne", "Przystawki", "Zupy", "Napoje", "Alkohole"]}
+          value={productCategory}
+          onChange={(e) => setProductCategory(e.target.value)}
+          className="w-full"
         />
         <Input
           type="number"

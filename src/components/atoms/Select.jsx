@@ -21,8 +21,6 @@ const Select = ({ label, name, id, options, value, onChange, className }) => (
   </span>
 );
 
-export default Select;
-
 Select.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -32,3 +30,5 @@ Select.propTypes = {
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };
+
+export default Select;
