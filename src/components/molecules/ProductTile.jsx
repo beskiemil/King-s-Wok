@@ -8,6 +8,7 @@ const ProductTile = ({ img, name, description }) => {
       <img
         src={img}
         className="h-64 w-64 rounded-[50px] object-cover object-center"
+        alt={name}
       />
       <h1 className="self-start text-2xl">{name}</h1>
       <p>{description}</p>
