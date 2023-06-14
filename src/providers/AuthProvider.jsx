@@ -1,22 +1,18 @@
 import { useState, createContext, useEffect } from "react";
 import { PropTypes } from "prop-types";
 
-export const AuthContext = createContext({
+const defaultUserInfo = {
   id: "",
   name: "",
   lastname: "",
   email: "",
   role: "",
-});
+};
+
+export const AuthContext = createContext(defaultUserInfo);
 
 const AuthProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState({
-    id: "",
-    name: "",
-    lastname: "",
-    email: "",
-    role: "",
-  });
+  const [userInfo, setUserInfo] = useState(defaultUserInfo);
 
   const register = async (userValues) => {
     const response = await fetch("http://localhost:3000/register", {
@@ -112,7 +108,7 @@ const AuthProvider = ({ children }) => {
     })
       .then((res) => res.json())
       .then(() => {
-        setUserInfo(null);
+        setUserInfo(defaultUserInfo);
       });
   };
 

@@ -53,7 +53,7 @@ const Navbar = () => {
         </NavLink>
       </nav>
       <div className="flex items-center justify-center">
-        {role === "admin" && (
+        {role && role === "admin" && (
           <>
             <NavLink
               to="/add_product"
