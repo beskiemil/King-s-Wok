@@ -1,5 +1,5 @@
 import Button from "components/atoms/Button";
-import dumplings from "assets/dim-sum-article.jpg";
+import dumplings from "assets/dim-sum-article.webp";
 import ProductSlider from "components/organisms/ProductSlider";
 
 const HomePage = () => {
@@ -15,7 +15,7 @@ const HomePage = () => {
           </h2>
           <Button
             text="ZAMÓW ONLINE"
-            className="border-white bg-white p-4 text-lg font-medium text-greenGrey"
+            className="p-4 text-lg font-medium text-white"
           />
         </div>
       </div>

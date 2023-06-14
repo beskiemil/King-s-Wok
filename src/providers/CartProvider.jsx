@@ -51,31 +51,6 @@ const CartProvider = ({ children }) => {
       }
     }
   };
-  // const cartReducer = (cart, action) => {
-  //   switch (action.type) {
-  //     case "add": {
-  //       if (cart[action.productIndex])
-  //         return {
-  //           ...cart,
-  //           [action.productIndex]: cart[action.productIndex] + 1,
-  //         };
-  //       else return { ...cart, [action.productIndex]: 1 };
-  //     }
-  //     case "subtract": {
-  //       if (cart[action.productIndex] && cart[action.productIndex] > 1)
-  //         return {
-  //           ...cart,
-  //           [action.productIndex]: cart[action.productIndex] - 1,
-  //         };
-  //       else if (cart[action.productIndex] && cart[action.productIndex] === 1)
-  //         return { ...cart, [action.productIndex]: 0 };
-  //       return cart;
-  //     }
-  //     default: {
-  //       throw Error("Invalid action type");
-  //     }
-  //   }
-  // };
 
   const amountReducer = (amount, action) => {
     switch (action.type) {

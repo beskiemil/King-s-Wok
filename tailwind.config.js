@@ -12,7 +12,7 @@ export default {
         orange: "#F56606",
       },
       backgroundImage: {
-        "home-banner": "url('/home-banner.jpg')",
+        "home-banner": "url('/home-banner.webp')",
       },
     },
   },
