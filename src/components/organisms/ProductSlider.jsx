@@ -1,28 +1,31 @@
-import ProductTile from "components/molecules/ProductTile";
+import { useContext } from "react";
 
-import dimsum from "assets/product-photos/dim-sum.jpg";
-import padthai from "assets/product-photos/padthai.jpg";
-import curry from "assets/product-photos/curry.jpg";
+import ErrorPage from "views/ErrorPage";
+import ProductTile from "components/molecules/ProductTile";
+import { ProductContext } from "providers/ProductProvider";
 
 const ProductSlider = () => {
+  const { data, status, error } = useContext(ProductContext).products;
+
+  if (status === "loading") return <p>loading...</p>;
+  if (status === "error") return <ErrorPage error={error} />;
+
   return (
-    <div className="md:flex md:flex-col md:items-center md:justify-center md:gap-16 lg:flex lg:flex-row lg:justify-around lg:gap-0">
-      <ProductTile
-        img={dimsum}
-        name="Dim Sum"
-        description="delikatne chińskie pierożki, nadziewane farszem z wołowiną i tajską bazylią"
-      />
-      <ProductTile
-        img={padthai}
-        name="Pad Thai"
-        description="smażony makaron ryżowy w stylu tajskim, z warzywami i orzeszkami ziemnymi"
-      />
-      <ProductTile
-        img={curry}
-        name="Czerwone Curry"
-        description="pikantne, kremowe czerwone curry na mleku kokosowym, warzywa, ryż basmati"
-      />
-    </div>
+    <>
+      <div className="md:flex md:flex-col md:items-center md:justify-center md:gap-16 lg:flex lg:flex-row lg:justify-around lg:gap-0">
+        {data.length > 0 &&
+          data
+            .slice(0, 3)
+            .map((product) => (
+              <ProductTile
+                key={`product-tile-${product.name}`}
+                img={product.image}
+                name={product.name}
+                description={product.description}
+              />
+            ))}
+      </div>
+    </>
   );
 };
 
