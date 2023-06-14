@@ -17,6 +17,7 @@ const ProductBar = ({ productIndex }) => {
       <img
         src={"http://localhost:3000/" + product.image}
         className="h-32 w-32 rounded-[30px] object-cover object-center"
+        alt={product.name}
       ></img>
       <div className="flex w-2/5 flex-col justify-between">
         <h1 className="text-2xl">{product.name}</h1>
