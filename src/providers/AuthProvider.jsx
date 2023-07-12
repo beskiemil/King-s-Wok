@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   });
 
   const register = async (userValues) => {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch("http://localhost:3000/api/register", {
       method: "POST",
       credentials: "include",
       headers: {
