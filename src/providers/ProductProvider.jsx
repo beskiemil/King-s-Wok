@@ -6,14 +6,14 @@ export const ProductContext = createContext({});
 
 const ProductProvider = ({ children }) => {
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/api/products");
+    const response = await fetch("http://localhost:3000/products");
     if (!response.ok) throw new Error("Could not fetch products");
     return response.json();
   };
   const products = useQuery(["products"], fetchProducts);
 
   const fetchProduct = async (id) => {
-    const response = await fetch(`http://localhost:3000/api/products/${id}`);
+    const response = await fetch(`http://localhost:3000/products/${id}`);
     if (!response.ok) throw new Error("Could not fetch products");
     return response.json();
   };

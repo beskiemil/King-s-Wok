@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(defaultUserInfo);
 
   const register = async (userValues) => {
-    const response = await fetch("http://localhost:3000/api/register", {
+    const response = await fetch("http://localhost:3000/register", {
       method: "POST",
       credentials: "include",
       headers: {
