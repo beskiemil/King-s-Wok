@@ -4,16 +4,18 @@ import { createContext } from "react";
 
 export const ProductContext = createContext({});
 
+const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
+
 const ProductProvider = ({ children }) => {
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:3000/products");
+    const response = await fetch(`${API_ENDPOINT}/products`);
     if (!response.ok) throw new Error("Could not fetch products");
     return response.json();
   };
   const products = useQuery(["products"], fetchProducts);
 
   const fetchProduct = async (id) => {
-    const response = await fetch(`http://localhost:3000/products/${id}`);
+    const response = await fetch(`${API_ENDPOINT}/products/${id}`);
     if (!response.ok) throw new Error("Could not fetch products");
     return response.json();
   };
