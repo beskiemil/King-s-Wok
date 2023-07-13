@@ -11,13 +11,11 @@ const defaultUserInfo = {
 
 export const AuthContext = createContext(defaultUserInfo);
 
-const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
-
 const AuthProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(defaultUserInfo);
 
   const register = async (userValues) => {
-    const response = await fetch(`${API_ENDPOINT}/register`, {
+    const response = await fetch("http://localhost:3000/register", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -48,7 +46,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password) => {
-    const response = await fetch(`${API_ENDPOINT}/login`, {
+    const response = await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +76,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const checkProfile = async () => {
-    const response = await fetch(`${API_ENDPOINT}/profile`, {
+    const response = await fetch("http://localhost:3000/profile", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +102,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await fetch(`${API_ENDPOINT}/logout`, {
+    await fetch("http://localhost:3000/logout", {
       credentials: "include",
       method: "POST",
     })
