@@ -21,7 +21,7 @@ const Navbar = () => {
   const { role } = userInfo;
 
   return (
-    <header className="flex justify-between bg-greenGrey px-8 py-1 text-xl text-white shadow-md xl:py-2">
+    <header className="flex flex-col justify-between bg-greenGrey px-8 py-1 text-xl text-white shadow-md md:flex-row xl:py-2">
       <Link to="/" className="flex items-center justify-center">
         <img
           src={logo}
@@ -32,7 +32,7 @@ const Navbar = () => {
           King&apos;s Wok
         </h1>
       </Link>
-      <nav className="flex items-center justify-center">
+      <nav className="flex flex-col items-center justify-center md:flex-row">
         <NavLink
           to="/menu"
           className={({ isActive }) => (isActive ? activeLink : unactiveLink)}
