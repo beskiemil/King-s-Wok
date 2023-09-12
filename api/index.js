@@ -16,8 +16,7 @@ const secret = process.env.SECRET;
 app.use(
   cors({
     credentials: true,
-    methods: ["POST", "GET"],
-    origin: ["https://king-s-wok.vercel.app/"],
+    origin: "http://localhost:5173",
   })
 );
 
