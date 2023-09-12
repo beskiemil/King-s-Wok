@@ -43,7 +43,9 @@ const HomePage = () => {
           </p>
         </div>
       </article>
-      <ProductSlider />
+      <div className="mx-auto w-4/5">
+        <ProductSlider />
+      </div>
     </main>
   );
 };
