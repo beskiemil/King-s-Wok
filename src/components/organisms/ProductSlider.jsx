@@ -12,7 +12,7 @@ const ProductSlider = () => {
 
   return (
     <>
-      <div className="md:flex md:flex-col md:items-center md:justify-center md:gap-16 lg:flex lg:flex-row lg:justify-around lg:gap-0">
+      <div className="flex w-full flex-col items-center gap-10 lg:flex-row lg:justify-around lg:gap-0">
         {data.length > 0 &&
           data
             .slice(0, 3)
